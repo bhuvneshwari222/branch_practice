@@ -6,6 +6,7 @@
     </div>
     <div class="col-md-6">
         <app-todo-list 
+        (emitRemoveID)="getRemoveID($event)"
         [getTodosArr]="todosArr"
         ></app-todo-list>
     </div>

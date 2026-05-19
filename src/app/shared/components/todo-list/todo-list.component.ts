@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Itodos } from '../../materials/todos';
 
 @Component({
@@ -8,6 +8,7 @@ import { Itodos } from '../../materials/todos';
 })
 export class TodoListComponent implements OnInit {
   @Input() getTodosArr!: Itodos[];
+  @Output() emitRemoveID: EventEmitter<string> = new EventEmitter<string>;
 
   constructor() { }
 
@@ -16,6 +17,10 @@ export class TodoListComponent implements OnInit {
 
   trackByTodosID(index:number, todo:Itodos){
     return todo.todoID;
+  }
+
+  onRemove(id: string){
+    this.emitRemoveID.emit(id);
   }
 
 }
