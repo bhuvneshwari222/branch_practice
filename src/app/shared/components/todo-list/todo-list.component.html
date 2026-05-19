@@ -8,7 +8,9 @@
             *ngFor="let todo of getTodosArr; trackBy: trackByTodosID">
                 <strong>{{todo.todoItem}}</strong>
                 <div>
-                    <button class="mr-2" mat-mini-fab color="primary">
+                    <button 
+                    (click)="onEdit(todo)"
+                    class="mr-2" mat-mini-fab color="primary">
                         <mat-icon>edit</mat-icon>
                     </button>
                     <button

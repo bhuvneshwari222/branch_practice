@@ -12,6 +12,8 @@ import { GetConfirmComponent } from '../get-confirm/get-confirm.component';
 })
 export class TodoDashboardComponent implements OnInit {
   todosArr: Itodos[] = [];
+  editObj!: Itodos;
+
   constructor(
     private _snackbar: SnackBarService,
     private _matDialog: MatDialog
@@ -39,12 +41,21 @@ export class TodoDashboardComponent implements OnInit {
           if (resp) {
             let getIndex = this.todosArr.findIndex(t => t.todoID === id);
             let removedID = this.todosArr.splice(getIndex, 1);
-             this._snackbar.openSnackBar(`The todoItem with id ${removedID[0]} is removed succesfully!!!`);
+            this._snackbar.openSnackBar(`The todoItem with id ${removedID[0]} is removed succesfully!!!`);
           }
         },
-        error: err =>{
+        error: err => {
           console.log(err);
         }
       })
+  }
+  onEdit(todo: Itodos) {
+    this.editObj = todo;
+  }
+
+  todoUpdate(todo: Itodos) {
+    let getindex = this.todosArr.findIndex(t => t.todoID === todo.todoID);
+    this.todosArr[getindex] = todo;
+    this._snackbar.openSnackBar(`the TodoItem is updated succesfully !!!!`)
   }
 }
