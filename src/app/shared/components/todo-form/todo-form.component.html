@@ -5,11 +5,11 @@
        
     <mat-card-content>
         <div class="form-group">
-            <label for="todoItem">todoItem</label>
+            <label for="todoItem">TodoItem</label>
             <input type="text" class="form-control" #todoItem>
         </div>
         <div class="form-group">
-            <label for="isCompleted">isCompleted</label>
+            <label for="isCompleted">IsCompleted</label>
             <select type="text" class="form-control" #isCompleted>
                 <option value="true">Yes</option>
                 <option value="false">No</option>
@@ -19,10 +19,10 @@
         <button 
         *ngIf="!isInEditMode"
         (click)="todoAdd()"
-        mat-raised-button color="primary">Add button</button>
+        mat-raised-button color="primary" class="w-100">Add Todo</button>
         <button 
         *ngIf="isInEditMode"
         (click)="todoUpdate()"
-        mat-raised-button color="primary">Update button</button>
+        mat-raised-button color="primary" class="w-100">Update Todo</button>
     </mat-card-content>
 </mat-card>

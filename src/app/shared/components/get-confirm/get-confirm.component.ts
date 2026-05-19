@@ -10,7 +10,7 @@ export class GetConfirmComponent implements OnInit {
   removeMSG !: string;
 
   constructor(
-    private _matDialogRef : MatDialogRef<GetConfirmComponent>,
+    private _matdialogRef : MatDialogRef<GetConfirmComponent>,
     @Inject(MAT_DIALOG_DATA) msg : string
   ) { 
     this.removeMSG = msg;
@@ -20,6 +20,6 @@ export class GetConfirmComponent implements OnInit {
   }
 
   onClose(flag: boolean){
-    this._matDialogRef.close(flag);
+    this._matdialogRef.close(flag);
   }
 }

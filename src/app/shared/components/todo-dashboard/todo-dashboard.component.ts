@@ -15,8 +15,7 @@ export class TodoDashboardComponent implements OnInit {
   editObj!: Itodos;
 
   constructor(
-    private _snackbar: SnackBarService,
-    private _matDialog: MatDialog
+    private _snackbar: SnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -30,24 +29,9 @@ export class TodoDashboardComponent implements OnInit {
   }
 
   getRemoveID(id: string) {
-    let config = new MatDialogConfig;
-    config.data = `Are you sure to remove this todoItem with id ${id}!!!`;
-    config.disableClose = false;
-    config.width = '350px';
-    let matdialogRef = this._matDialog.open(GetConfirmComponent)
-    matdialogRef.afterClosed()
-      .subscribe({
-        next: resp => {
-          if (resp) {
-            let getIndex = this.todosArr.findIndex(t => t.todoID === id);
-            let removedID = this.todosArr.splice(getIndex, 1);
-            this._snackbar.openSnackBar(`The todoItem with id ${removedID[0]} is removed succesfully!!!`);
-          }
-        },
-        error: err => {
-          console.log(err);
-        }
-      })
+    let getIndex = this.todosArr.findIndex(t => t.todoID === id);
+    let removedID = this.todosArr.splice(getIndex, 1);
+    this._snackbar.openSnackBar(`The todoItem with id ${removedID[0]} is removed succesfully!!!`);
   }
   onEdit(todo: Itodos) {
     this.editObj = todo;
