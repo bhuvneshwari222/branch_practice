@@ -10,6 +10,7 @@ import { SnackBarService } from '../../services/snackbar.service';
 })
 export class TodoDashboardComponent implements OnInit {
   todosArr: Itodos[] = [];
+  editObj!:Itodos
   constructor(private _snackbar:SnackBarService) { 
 
   }
@@ -22,5 +23,15 @@ export class TodoDashboardComponent implements OnInit {
   AddTodo(todo:Itodos){
     this.todosArr.push(todo);
     this._snackbar.openSnackBar(`The todoItem ${todo.todoItem} is added succesfully`);
+  }
+
+  onEdit(todo:Itodos){
+     this.editObj=todo;
+  }
+
+  todoUpdate(todo:Itodos){
+    let getindex=this.todosArr.findIndex(t=>t.todoID===todo.todoID);
+    this.todosArr[getindex]=todo;
+    this._snackbar.openSnackBar(`the TodoItem is updated succesfully !!!!`)
   }
 }

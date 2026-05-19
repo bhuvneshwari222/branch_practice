@@ -22,6 +22,7 @@
         mat-raised-button color="primary">Add button</button>
         <button 
         *ngIf="isInEditMode"
+        (click)="todoUpdate()"
         mat-raised-button color="primary">Update button</button>
     </mat-card-content>
 </mat-card>
