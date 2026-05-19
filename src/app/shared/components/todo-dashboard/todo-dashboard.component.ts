@@ -9,16 +9,18 @@ import { SnackBarService } from '../../services/snackbar.service';
   styleUrls: ['./todo-dashboard.component.scss']
 })
 export class TodoDashboardComponent implements OnInit {
-todoArr:Array<Itodos>=[]
-  constructor(private _snackbar:SnackBarService) { }
+  todosArr: Itodos[] = [];
+  constructor(private _snackbar:SnackBarService) { 
+
+  }
 
   ngOnInit(): void {
-    this.todoArr=todosData
+    this.todosArr = todosData;
   }
 
 
   AddTodo(todo:Itodos){
-    this.todoArr.push(todo);
+    this.todosArr.push(todo);
     this._snackbar.openSnackBar(`The todoItem ${todo.todoItem} is added succesfully`);
   }
 }
